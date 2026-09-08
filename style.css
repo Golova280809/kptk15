@@ -1,0 +1,491 @@
+/* ======================================================
+   style.css — полные стили для сайта КПТК группа 15
+   ====================================================== */
+
+/* ===== СБРОС ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #eef2f6;
+    color: #1e293b;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ===== МЕНЮ (с жёлтой полосой) ===== */
+.navbar {
+    background: #0b2b4a;
+    padding: 0 24px;
+    border-bottom: 3px solid #facc15;
+}
+
+.navbar .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.nav-logo {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-decoration: none;
+    padding: 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo i {
+    color: #7bc9ff;
+}
+
+.nav-logo span {
+    font-weight: 400;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-left: 4px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+}
+
+.nav-menu li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.25s;
+    display: block;
+}
+
+.nav-menu li a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.nav-menu li a.active {
+    background: #facc15;
+    color: #0b2b4a;
+}
+
+.nav-menu li a i {
+    margin-right: 6px;
+}
+
+/* ===== ГЕРОЙ ===== */
+.hero {
+    padding: 40px 0 32px;
+}
+
+.hero__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero__text h2 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.hero__text h2 i {
+    color: #1a6b9e;
+}
+
+.hero__text .highlight {
+    color: #1a6b9e;
+    background: #dbeafe;
+    padding: 0 8px;
+    border-radius: 6px;
+}
+
+.hero__text p {
+    font-size: 1.15rem;
+    color: #334155;
+    max-width: 500px;
+    margin-bottom: 28px;
+}
+
+.hero__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 12px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-item i {
+    font-size: 1.8rem;
+    color: #1a6b9e;
+    width: 40px;
+    text-align: center;
+}
+
+.stat-item .num {
+    font-weight: 800;
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.stat-item .label {
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.hero__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero__image .icon-grid {
+    background: #fff;
+    border-radius: 32px;
+    padding: 32px 28px;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.10);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 16px;
+    width: 100%;
+    max-width: 380px;
+    border: 1px solid #e2e8f0;
+}
+
+.hero__image .icon-grid i {
+    font-size: 3rem;
+    color: #1e3a5f;
+    opacity: 0.8;
+    transition: 0.2s;
+    text-align: center;
+}
+
+.hero__image .icon-grid i:hover {
+    opacity: 1;
+    transform: scale(1.08);
+    color: #0b2b4a;
+}
+
+/* ===== ФОТО КОЛЛЕДЖА ===== */
+.college-photo {
+    background: #fff;
+    border-radius: 24px;
+    padding: 20px;
+    margin: 16px 0 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.college-photo img {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 2px solid #facc15;
+}
+
+.college-photo .caption {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 1rem;
+}
+
+.college-photo .caption i {
+    color: #facc15;
+    margin-right: 6px;
+}
+
+/* ===== КАРТОЧКИ КОМПЕТЕНЦИЙ ===== */
+.section-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin: 40px 0 24px;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.section-title i {
+    color: #1a6b9e;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 28px 22px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transition: 0.25s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.10);
+    border-color: #facc15;
+}
+
+.card i {
+    font-size: 2.2rem;
+    color: #1a6b9e;
+    margin-bottom: 14px;
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+.card .tag {
+    display: inline-block;
+    margin-top: 14px;
+    background: #eef4fa;
+    padding: 4px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #1a4b6d;
+}
+
+/* ===== КУРАТОР ===== */
+.curator-preview {
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px 32px;
+    margin: 32px 0 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+}
+
+.curator-preview .avatar-small {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #facc15;
+    flex-shrink: 0;
+    background: #dce5ed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    color: #1a4b6d;
+}
+
+.curator-preview .info h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.curator-preview .info .role {
+    color: #1a6b9e;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.curator-preview .info .role i {
+    color: #facc15;
+}
+
+.curator-preview .info p {
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+.curator-preview .link {
+    margin-left: auto;
+    background: #0b2b4a;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    white-space: nowrap;
+}
+
+.curator-preview .link:hover {
+    background: #1a4b6d;
+    transform: translateY(-2px);
+}
+
+/* ===== ИКОНКИ КОЛЛЕДЖА ===== */
+.college-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 16px 0 8px;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 16px;
+}
+
+.college-badges .badge-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.college-badges .badge-item i {
+    font-size: 1.4rem;
+    color: #1a6b9e;
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    margin-top: 40px;
+    padding: 24px 0 18px;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.footer i {
+    color: #b22234;
+    margin: 0 4px;
+}
+
+/* ======================================================
+   АДАПТИВ
+   ====================================================== */
+@media (max-width: 860px) {
+    .navbar .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-logo {
+        justify-content: center;
+        padding: 10px 0 4px;
+    }
+
+    .nav-menu {
+        justify-content: center;
+        padding: 4px 0 10px;
+    }
+
+    .nav-menu li a {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+
+    .hero__grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero__text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero__stats {
+        justify-content: center;
+    }
+
+    .hero__image .icon-grid {
+        max-width: 300px;
+        padding: 20px 16px;
+        gap: 14px;
+    }
+
+    .hero__image .icon-grid i {
+        font-size: 2.4rem;
+    }
+
+    .hero__text h2 {
+        font-size: 2rem;
+    }
+
+    .curator-preview {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .curator-preview .link {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .college-photo img {
+        max-height: 200px;
+    }
+
+    .college-badges {
+        gap: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-menu li a {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+
+    .hero__text h2 {
+        font-size: 1.6rem;
+    }
+
+    .stat-item .num {
+        font-size: 1.3rem;
+    }
+
+    .college-photo img {
+        max-height: 150px;
+    }
+}
