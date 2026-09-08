@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Расписание — Группа 15 | КПТК</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+<!-- ===== МЕНЮ ===== -->
+<nav class="navbar">
+    <div class="container">
+        <a href="../index.html" class="nav-logo">
+            <i class="fas fa-graduation-cap"></i> КПТК <span>| группа 15</span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="../index.html"><i class="fas fa-home"></i> Главная</a></li>
+            <li><a href="../students/index.html"><i class="fas fa-users"></i> Студенты</a></li>
+            <li><a href="index.html" class="active"><i class="fas fa-calendar-alt"></i> Расписание</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Контакты</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ===== РАСПИСАНИЕ ===== -->
+<div class="container schedule-section">
+
+    <!-- ЗАГОЛОВОК -->
+    <div class="page-title">
+        <h2>
+            <i class="fas fa-calendar-alt"></i> Расписание
+            <span class="count">группа 15</span>
+        </h2>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--  ОДИН ДЕНЬ — МЕНЯЙТЕ ЗДЕСЬ ВСЁ ЧТО НУЖНО                     -->
+    <!-- ============================================================ -->
+    <div class="schedule-card">
+
+        <!-- ШАПКА: день недели + дата -->
+        <div class="schedule-header">
+            <span class="day-name"><i class="fas fa-calendar-day"></i>Среда</span>
+            <span class="day-date">09.09.2026</span>
+        </div>
+
+        <!-- СПИСОК ПАР -->
+        <ul class="lesson-list">
+
+            <!-- Пара 1 -->
+            <li>
+                <span class="lesson-name">Электронный Докум/об</span>
+                <span class="lesson-room">к. 326</span>
+            </li>
+
+            <!-- Пара 2 -->
+            <li>
+                <span class="lesson-name">Математика</span>
+                <span class="lesson-room">к. 323</span>
+            </li>
+
+            <!-- Пара 3 -->
+            <li>
+                <span class="lesson-name">ОИТ</span>
+                <span class="lesson-room">к. 324</span>
+            </li>
+            
+            <!-- Пара. 4 -->
+            <li>
+                <span class="lesson-name">ОБЗР</span>
+                <span class="lesson-room">к. 215</span>
+            </li>
+
+            <!-- Если нет пар — раскомментируйте строку ниже и удалите пары выше -->
+            <!-- <li class="empty-message">Сегодня занятий нет</li> -->
+
+        </ul>
+    </div>
+
+</div>
+
+<!-- ===== ФУТЕР ===== -->
+<footer class="footer">
+    <div class="container">
+        <p>
+            <i class="fas fa-map-pin"></i> Краснокаменск, 2026 &bull;
+            КПТК, группа 15 &bull;
+            <i class="fas fa-heart"></i> Операторы информационных систем и ресурсов
+        </p>
+        <p style="margin-top: 6px; font-size: 0.8rem; opacity: 0.7;">
+            <i class="far fa-copyright"></i> Портфолио группы · Полностью статический сайт
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

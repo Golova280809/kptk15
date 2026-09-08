@@ -708,3 +708,184 @@ body {
         font-size: 1.2rem;
     }
 }
+
+
+        padding: 10px 0;
+    }
+
+    .lesson-list li {
+        font-size: 0.85rem;
+    }
+
+    .lesson-list .lesson-time {
+        font-size: 0.75rem;
+        min-width: 50px;
+    }
+
+    .lesson-list .lesson-room {
+        font-size: 0.65rem;
+        padding: 0 8px;
+    }
+
+    .day-header .day-badge {
+        font-size: 0.6rem;
+        padding: 1px 10px;
+    }
+}
+
+/* ======================================================
+   СТРАНИЦА РАСПИСАНИЯ (ОДИН ДЕНЬ)
+   ====================================================== */
+
+.schedule-section {
+    padding: 20px 0 40px;
+}
+
+.schedule-section .page-title {
+    margin-bottom: 24px;
+}
+
+/* Карточка расписания */
+.schedule-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 36px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    max-width: 700px;
+}
+
+/* Шапка: день недели + дата */
+.schedule-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid #facc15;
+    margin-bottom: 24px;
+}
+
+.schedule-header .day-name {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #facc15;
+    letter-spacing: -0.02em;
+}
+
+.schedule-header .day-name i {
+    color: #facc15;
+    margin-right: 12px;
+}
+
+.schedule-header .day-date {
+    font-size: 1.15rem;
+    color: #64748b;
+    font-weight: 500;
+    background: #eef2f6;
+    padding: 4px 18px;
+    border-radius: 30px;
+}
+
+/* Список пар */
+.lesson-list {
+    list-style: none;
+}
+
+.lesson-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eef2f6;
+    font-size: 1.1rem;
+}
+
+.lesson-list li:last-child {
+    border-bottom: none;
+}
+
+.lesson-list .lesson-name {
+    font-weight: 600;
+    color: #1e293b;
+    flex: 1;
+}
+
+.lesson-list .lesson-room {
+    background: #dbeafe;
+    padding: 4px 18px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a4b6d;
+    white-space: nowrap;
+}
+
+/* Пустое расписание */
+.empty-message {
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 1.1rem;
+    padding: 12px 0;
+    text-align: center;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+    .schedule-card {
+        padding: 20px 16px;
+    }
+
+    .schedule-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .schedule-header .day-name {
+        font-size: 1.5rem;
+    }
+
+    .schedule-header .day-date {
+        font-size: 1rem;
+        padding: 2px 14px;
+    }
+
+    .lesson-list li {
+        font-size: 1rem;
+        padding: 10px 0;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .lesson-list .lesson-name {
+        flex: 1 1 100%;
+        order: 0;
+    }
+
+    .lesson-list .lesson-room {
+        font-size: 0.85rem;
+        padding: 2px 14px;
+        order: 1;
+    }
+}
+
+    .lesson-list .lesson-time {
+        min-width: 55px;
+        font-size: 0.85rem;
+    }
+
+    .lesson-list .lesson-name {
+        font-size: 0.9rem;
+        flex: 1 1 100%;
+        order: 1;
+    }
+
+    .lesson-list .lesson-room {
+        font-size: 0.7rem;
+        padding: 1px 10px;
+        order: 2;
+    }
+}
