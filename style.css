@@ -889,3 +889,87 @@ body {
         order: 2;
     }
 }
+
+/* ======================================================
+   СТРАНИЦА ДОСТИЖЕНИЙ
+   ====================================================== */
+
+.achievements-section {
+    padding: 20px 0 40px;
+}
+
+.achievements-section .page-title {
+    margin-bottom: 24px;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px;
+    padding: 16px 0 20px;
+}
+
+.achievement-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e2e8f0;
+    transition: 0.25s ease;
+    text-align: center;
+}
+
+.achievement-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.12);
+    border-color: #facc15;
+}
+
+.achievement-card .icon {
+    font-size: 3.6rem;
+    color: #facc15;
+    margin-bottom: 14px;
+}
+
+.achievement-card .title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1e293b;
+}
+
+.achievement-card .desc {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.achievement-card .student-name {
+    display: inline-block;
+    margin-top: 14px;
+    background: #dbeafe;
+    padding: 4px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a4b6d;
+}
+
+/* Адаптив */
+@media (max-width: 600px) {
+    .achievement-card {
+        padding: 24px 16px 20px;
+    }
+
+    .achievement-card .icon {
+        font-size: 2.8rem;
+    }
+
+    .achievement-card .title {
+        font-size: 1rem;
+    }
+
+    .achievement-card .desc {
+        font-size: 0.9rem;
+    }
+}
