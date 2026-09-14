@@ -1,975 +1,1233 @@
 /* ======================================================
-   style.css — полные стили для сайта КПТК группа 15
+   КПТК | Группа 15 — Полные стили сайта
+   Оглавление:
+   00. Сброс и база
+   01. Контейнер
+   02. Меню (navbar)
+   03. Главная: hero-блок
+   04. Главная: фото колледжа
+   05. Главная: карточки
+   06. Главная: превью куратора
+   07. Главная: иконки колледжа (badges)
+   08. Страница студентов: куратор
+   09. Страница студентов: заголовок
+   10. Страница студентов: сетка
+   11. Страница студентов: карточка-ссылка
+   12. Личная страница студента
+   13. Расписание
+   14. Достижения группы
+   15. Футер
+   16. Адаптив
    ====================================================== */
 
-/* ===== СБРОС ===== */
+
+/* ======================================================
+   00. СБРОС И БАЗА
+   Убираем отступы браузера по умолчанию и задаём базовый шрифт.
+   ====================================================== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;                  /* убрать внешние отступы у всех элементов */
+    padding: 0;                 /* убрать внутренние отступы у всех элементов */
+    box-sizing: border-box;     /* ширина элемента включает padding и border (иначе всё поедет) */
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: #eef2f6;
-    color: #1e293b;
-    min-height: 100vh;
+    font-family: 'Inter', sans-serif;   /* основной шрифт: Inter, если нет — любой без засечек */
+    background: #eef2f6;                /* светло-серо-голубой фон страницы */
+    color: #1e293b;                     /* цвет текста по умолчанию (тёмно-синий) */
+    min-height: 100vh;                  /* высота минимум на весь экран (vh = % высоты окна) */
 }
 
+
+/* ======================================================
+   01. КОНТЕЙНЕР
+   Центрирует контент и не даёт ему растянуться на весь экран.
+   ====================================================== */
 .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 24px;
+    max-width: 1280px;      /* максимальная ширина контента — 1280px */
+    margin: 0 auto;         /* 0 сверху/снизу, auto по бокам = центрирование */
+    padding: 0 24px;        /* внутренние отступы по 24px по бокам (чтобы не прилипало к краям) */
 }
 
-/* ===== МЕНЮ (с жёлтой полосой) ===== */
+
+/* ======================================================
+   02. МЕНЮ (NAVBAR)
+   Тёмно-синяя полоса сверху с логотипом и ссылками.
+   ====================================================== */
 .navbar {
-    background: #0b2b4a;
-    padding: 0 24px;
-    border-bottom: 3px solid #facc15;
+    background: #0b2b4a;                /* тёмно-синий фон меню */
+    padding: 0 24px;                    /* отступы по бокам внутри меню */
+    border-bottom: 3px solid #facc15;   /* жёлтая полоса снизу толщиной 3px */
 }
 
 .navbar .container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0;
+    display: flex;                      /* включаем flexbox: элементы внутри выстраиваются в ряд */
+    flex-wrap: wrap;                    /* если не влезают — переносятся на новую строку */
+    align-items: center;                /* выравнивание по центру по вертикали */
+    justify-content: space-between;     /* первый элемент слева, последний справа */
+    padding: 0;                         /* убираем padding, унаследованный от .container */
 }
 
 .nav-logo {
-    color: #fff;
-    font-size: 1.3rem;
-    font-weight: 800;
-    text-decoration: none;
-    padding: 14px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    color: #fff;                        /* белый цвет текста логотипа */
+    font-size: 1.3rem;                  /* размер шрифта = 1.3 × базовый (≈20.8px) */
+    font-weight: 800;                   /* очень жирный шрифт */
+    text-decoration: none;              /* убираем подчёркивание у ссылки */
+    padding: 14px 0;                    /* отступы сверху и снизу 14px */
+    display: flex;                      /* выстраиваем иконку и текст в ряд */
+    align-items: center;                /* выравниваем их по центру по вертикали */
+    gap: 10px;                          /* расстояние между иконкой и текстом */
 }
 
 .nav-logo i {
-    color: #7bc9ff;
+    color: #7bc9ff;                     /* голубая иконка-шапочка выпускника */
 }
 
 .nav-logo span {
-    font-weight: 400;
-    font-size: 0.7rem;
-    opacity: 0.7;
-    margin-left: 4px;
+    font-weight: 400;                   /* обычная жирность для надписи "| группа 15" */
+    font-size: 0.7rem;                  /* очень мелкий шрифт (≈11.2px) */
+    opacity: 0.7;                       /* прозрачность 70% — делает текст полупрозрачным */
+    margin-left: 4px;                   /* небольшой отступ слева */
 }
 
 .nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 6px;
-    flex-wrap: wrap;
-    padding: 8px 0;
+    display: flex;                      /* пункты меню в ряд */
+    list-style: none;                   /* убираем точки у списка <ul> */
+    gap: 6px;                           /* расстояние между пунктами меню */
+    flex-wrap: wrap;                    /* при нехватке места переносятся на новую строку */
+    padding: 8px 0;                     /* отступы сверху и снизу */
 }
 
 .nav-menu li a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: 0.25s;
-    display: block;
+    color: rgba(255, 255, 255, 0.8);    /* белый с прозрачностью 80% */
+    text-decoration: none;              /* без подчёркивания */
+    padding: 8px 18px;                  /* "таблетка": 8px сверху/снизу, 18px по бокам */
+    border-radius: 30px;                /* сильно скруглённые углы — форма "таблетки" */
+    font-weight: 600;                   /* полужирный */
+    font-size: 0.95rem;                 /* размер шрифта чуть меньше базового */
+    transition: 0.25s;                  /* все изменения плавно за 0.25 секунды */
+    display: block;                     /* ссылка занимает всю "таблетку" (кликабельна целиком) */
 }
 
 .nav-menu li a:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.12);  /* при наведении — светлый полупрозрачный фон */
+    color: #fff;                            /* текст становится чисто белым */
 }
 
 .nav-menu li a.active {
-    background: #facc15;
-    color: #0b2b4a;
+    background: #facc15;                    /* активная страница: жёлтый фон */
+    color: #0b2b4a;                         /* и тёмно-синий текст */
 }
 
 .nav-menu li a i {
-    margin-right: 6px;
+    margin-right: 6px;                      /* отступ между иконкой и текстом ссылки */
 }
 
-/* ===== ГЕРОЙ ===== */
+
+/* ======================================================
+   03. ГЛАВНАЯ: HERO-БЛОК
+   Верхний блок главной: заголовок + статистика + сетка иконок.
+   ====================================================== */
 .hero {
-    padding: 40px 0 32px;
+    padding: 40px 0 32px;       /* 40px сверху, 32px снизу */
 }
 
 .hero__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
+    display: grid;                      /* включаем grid (сетку) */
+    grid-template-columns: 1fr 1fr;     /* две равные колонки (1fr = одна доля свободного места) */
+    gap: 40px;                          /* расстояние между колонками 40px */
+    align-items: center;                /* выравнивание по вертикали по центру */
 }
 
 .hero__text h2 {
-    font-size: 2.6rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
+    font-size: 2.6rem;                  /* крупный заголовок ≈41.6px */
+    font-weight: 800;                   /* очень жирный */
+    line-height: 1.2;                   /* межстрочный интервал 1.2 от размера шрифта */
+    margin-bottom: 16px;                /* отступ снизу */
+    letter-spacing: -0.02em;            /* чуть сжать буквы для стиля (отрицательный трекинг) */
 }
 
 .hero__text h2 i {
-    color: #1a6b9e;
+    color: #1a6b9e;                     /* синяя иконка в заголовке */
 }
 
 .hero__text .highlight {
-    color: #1a6b9e;
-    background: #dbeafe;
-    padding: 0 8px;
-    border-radius: 6px;
+    color: #1a6b9e;                     /* синий текст выделенного слова */
+    background: #dbeafe;                /* светло-голубая подложка (эффект маркера) */
+    padding: 0 8px;                     /* небольшие отступы по бокам */
+    border-radius: 6px;                 /* слегка скруглённые углы */
 }
 
 .hero__text p {
-    font-size: 1.15rem;
-    color: #334155;
-    max-width: 500px;
-    margin-bottom: 28px;
+    font-size: 1.15rem;                 /* размер абзаца чуть больше базового */
+    color: #334155;                     /* серо-синий цвет */
+    max-width: 500px;                   /* ограничиваем ширину абзаца для читаемости */
+    margin-bottom: 28px;                /* отступ снизу */
 }
 
 .hero__stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 12px;
+    display: flex;                      /* статистика в ряд */
+    flex-wrap: wrap;                    /* при нехватке места — на новую строку */
+    gap: 30px;                          /* расстояние между пунктами статистики */
+    margin-top: 12px;                   /* отступ сверху */
 }
 
 .stat-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: flex;                      /* иконка + текст в ряд */
+    align-items: center;                /* выравнивание по центру по вертикали */
+    gap: 10px;                          /* расстояние между иконкой и цифрой/подписью */
 }
 
 .stat-item i {
-    font-size: 1.8rem;
-    color: #1a6b9e;
-    width: 40px;
-    text-align: center;
+    font-size: 1.8rem;                  /* крупная иконка */
+    color: #1a6b9e;                     /* синяя */
+    width: 40px;                        /* фиксированная ширина, чтобы иконки выравнивались */
+    text-align: center;                 /* иконка по центру своей ячейки */
 }
 
 .stat-item .num {
-    font-weight: 800;
-    font-size: 1.6rem;
-    line-height: 1;
+    font-weight: 800;                   /* жирные цифры */
+    font-size: 1.6rem;                  /* крупный размер */
+    line-height: 1;                     /* без дополнительного межстрочного интервала */
 }
 
 .stat-item .label {
-    font-size: 0.9rem;
-    color: #475569;
+    font-size: 0.9rem;                  /* подпись под цифрой — мельче */
+    color: #475569;                     /* серо-синий цвет */
 }
 
 .hero__image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;                      /* центрируем сетку иконок */
+    justify-content: center;            /* по горизонтали по центру */
+    align-items: center;                /* по вертикали по центру */
 }
 
 .hero__image .icon-grid {
-    background: #fff;
-    border-radius: 32px;
-    padding: 32px 28px;
-    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.10);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px 16px;
-    width: 100%;
-    max-width: 380px;
-    border: 1px solid #e2e8f0;
+    background: #fff;                           /* белая подложка */
+    border-radius: 32px;                        /* сильно скруглённые углы */
+    padding: 32px 28px;                         /* внутренние отступы: 32 сверху/снизу, 28 по бокам */
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.10);  /* мягкая тень снизу */
+    display: grid;                              /* сетка иконок */
+    grid-template-columns: repeat(4, 1fr);      /* 4 равные колонки */
+    gap: 20px 16px;                             /* 20px между строками, 16px между колонками */
+    width: 100%;                                /* на всю доступную ширину */
+    max-width: 380px;                           /* но не больше 380px */
+    border: 1px solid #e2e8f0;                  /* тонкая серая рамка */
 }
 
 .hero__image .icon-grid i {
-    font-size: 3rem;
-    color: #1e3a5f;
-    opacity: 0.8;
-    transition: 0.2s;
-    text-align: center;
+    font-size: 3rem;                    /* крупные иконки в сетке */
+    color: #1e3a5f;                     /* тёмно-синий */
+    opacity: 0.8;                       /* чуть прозрачные по умолчанию */
+    transition: 0.2s;                   /* плавное изменение при наведении */
+    text-align: center;                 /* иконка по центру ячейки */
 }
 
 .hero__image .icon-grid i:hover {
-    opacity: 1;
-    transform: scale(1.08);
-    color: #0b2b4a;
+    opacity: 1;                         /* при наведении — полностью непрозрачная */
+    transform: scale(1.08);             /* увеличение на 8% */
+    color: #0b2b4a;                     /* более насыщенный тёмно-синий */
 }
 
-/* ===== ФОТО КОЛЛЕДЖА ===== */
+
+/* ======================================================
+   04. ГЛАВНАЯ: ФОТО КОЛЛЕДЖА
+   Белая карточка с фото и подписью.
+   ====================================================== */
 .college-photo {
-    background: #fff;
-    border-radius: 24px;
-    padding: 20px;
-    margin: 16px 0 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e2e8f0;
-    text-align: center;
+    background: #fff;                               /* белая подложка */
+    border-radius: 24px;                            /* скруглённые углы */
+    padding: 20px;                                  /* внутренние отступы */
+    margin: 16px 0 8px;                             /* 16px сверху, 8px снизу */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);    /* очень мягкая тень */
+    border: 1px solid #e2e8f0;                      /* тонкая рамка */
+    text-align: center;                             /* содержимое по центру */
 }
 
 .college-photo img {
-    width: 100%;
-    max-height: 320px;
-    object-fit: cover;
-    border-radius: 16px;
-    border: 2px solid #facc15;
+    width: 100%;                        /* картинка на всю ширину карточки */
+    max-height: 320px;                  /* но не выше 320px */
+    object-fit: cover;                  /* обрезать лишнее, сохраняя пропорции */
+    border-radius: 16px;                /* скруглённые углы картинки */
+    border: 2px solid #facc15;          /* жёлтая рамка вокруг фото */
 }
 
 .college-photo .caption {
-    margin-top: 10px;
-    font-weight: 600;
-    color: #1e293b;
-    font-size: 1rem;
+    margin-top: 10px;                   /* отступ сверху от фото */
+    font-weight: 600;                   /* полужирная подпись */
+    color: #1e293b;                     /* тёмный цвет */
+    font-size: 1rem;                    /* базовый размер */
 }
 
 .college-photo .caption i {
-    color: #facc15;
-    margin-right: 6px;
+    color: #facc15;                     /* жёлтая иконка-метка */
+    margin-right: 6px;                  /* отступ от иконки до текста */
 }
 
-/* ===== КАРТОЧКИ ===== */
+
+/* ======================================================
+   05. ГЛАВНАЯ: КАРТОЧКИ
+   Сетка карточек с описанием направлений (информационные блоки).
+   ====================================================== */
 .section-title {
-    font-size: 1.9rem;
-    font-weight: 700;
-    margin: 40px 0 24px;
-    letter-spacing: -0.02em;
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    font-size: 1.9rem;                  /* крупный заголовок секции */
+    font-weight: 700;                   /* жирный */
+    margin: 40px 0 24px;                /* 40px сверху, 24px снизу */
+    letter-spacing: -0.02em;            /* лёгкое сжатие букв */
+    display: flex;                      /* иконка + текст в ряд */
+    align-items: center;                /* выравнивание по центру */
+    gap: 14px;                          /* расстояние между иконкой и текстом */
 }
 
 .section-title i {
-    color: #1a6b9e;
+    color: #1a6b9e;                     /* синяя иконка */
 }
 
 .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 28px;
-    margin-bottom: 20px;
+    display: grid;                                          /* сетка карточек */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));  /* авто-колонки минимум 240px */
+    gap: 28px;                                              /* расстояние между карточками */
+    margin-bottom: 20px;                                    /* отступ снизу */
 }
 
 .card {
-    background: #fff;
-    border-radius: 24px;
-    padding: 28px 22px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-    transition: 0.25s ease;
-    border: 1px solid #e2e8f0;
+    background: #fff;                               /* белая подложка */
+    border-radius: 24px;                            /* скруглённые углы */
+    padding: 28px 22px;                             /* 28px сверху/снизу, 22px по бокам */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);    /* мягкая тень */
+    transition: 0.25s ease;                         /* плавный hover */
+    border: 1px solid #e2e8f0;                      /* тонкая рамка */
 }
 
 .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.10);
-    border-color: #facc15;
+    transform: translateY(-6px);                    /* приподнимаем на 6px вверх */
+    box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.10);  /* усиливаем тень */
+    border-color: #facc15;                          /* рамка становится жёлтой */
 }
 
 .card i {
-    font-size: 2.2rem;
-    color: #1a6b9e;
-    margin-bottom: 14px;
+    font-size: 2.2rem;                  /* крупная иконка */
+    color: #1a6b9e;                     /* синяя */
+    margin-bottom: 14px;                /* отступ снизу */
 }
 
 .card h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-size: 1.2rem;                  /* заголовок карточки */
+    font-weight: 700;                   /* жирный */
+    margin-bottom: 8px;                 /* отступ снизу */
 }
 
 .card p {
-    color: #475569;
-    font-size: 0.95rem;
+    color: #475569;                     /* серо-синий текст */
+    font-size: 0.95rem;                 /* чуть меньше базового */
 }
 
 .card .tag {
-    display: inline-block;
-    margin-top: 14px;
-    background: #eef4fa;
-    padding: 4px 14px;
-    border-radius: 30px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #1a4b6d;
+    display: inline-block;              /* "таблетка" вокруг метки */
+    margin-top: 14px;                   /* отступ сверху */
+    background: #eef4fa;                /* светло-голубой фон */
+    padding: 4px 14px;                  /* внутренние отступы */
+    border-radius: 30px;                /* сильно скруглённые углы */
+    font-size: 0.75rem;                 /* мелкий шрифт */
+    font-weight: 600;                   /* полужирный */
+    color: #1a4b6d;                     /* тёмно-синий текст */
 }
 
-/* ===== КУРАТОР ===== */
+
+/* ======================================================
+   06. ГЛАВНАЯ: ПРЕВЬЮ КУРАТОРА
+   Горизонтальная карточка с аватаром куратора и краткой инфой.
+   ====================================================== */
 .curator-preview {
-    background: #fff;
-    border-radius: 20px;
-    padding: 24px 32px;
-    margin: 32px 0 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e2e8f0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 24px;
+    background: #fff;                               /* белая подложка */
+    border-radius: 20px;                            /* скруглённые углы */
+    padding: 24px 32px;                             /* 24px сверху/снизу, 32px по бокам */
+    margin: 32px 0 0;                               /* только сверху */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);    /* мягкая тень */
+    border: 1px solid #e2e8f0;                      /* тонкая рамка */
+    display: flex;                                  /* аватар + текст + кнопка в ряд */
+    flex-wrap: wrap;                                /* перенос при нехватке места */
+    align-items: center;                            /* выравнивание по центру */
+    gap: 24px;                                      /* расстояние между элементами */
 }
 
 .curator-preview .avatar-small {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #facc15;
-    flex-shrink: 0;
-    background: #dce5ed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.4rem;
-    color: #1a4b6d;
+    width: 80px;                        /* ширина аватара */
+    height: 80px;                       /* высота аватара */
+    border-radius: 50%;                 /* круглая форма */
+    object-fit: cover;                  /* обрезка без искажений (если это <img>) */
+    border: 3px solid #facc15;          /* жёлтая рамка */
+    flex-shrink: 0;                     /* не сжимать при нехватке места */
+    background: #dce5ed;                /* фон-заглушка */
+    display: flex;                      /* центрируем содержимое (если внутри иконка) */
+    align-items: center;                /* по вертикали */
+    justify-content: center;            /* по горизонтали */
+    font-size: 2.4rem;                  /* крупная иконка внутри */
+    color: #1a4b6d;                     /* цвет иконки-заглушки */
 }
 
 .curator-preview .info h4 {
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.1rem;                  /* имя куратора */
+    font-weight: 700;                   /* жирный */
 }
 
 .curator-preview .info .role {
-    color: #1a6b9e;
-    font-weight: 600;
-    font-size: 0.9rem;
+    color: #1a6b9e;                     /* синий текст роли */
+    font-weight: 600;                   /* полужирный */
+    font-size: 0.9rem;                  /* чуть меньше базового */
 }
 
 .curator-preview .info .role i {
-    color: #facc15;
+    color: #facc15;                     /* жёлтая звёздочка */
 }
 
 .curator-preview .info p {
-    color: #475569;
-    font-size: 0.95rem;
+    color: #475569;                     /* серо-синий текст */
+    font-size: 0.95rem;                 /* чуть меньше базового */
 }
 
 .curator-preview .link {
-    margin-left: auto;
-    background: #0b2b4a;
-    color: #fff;
-    padding: 10px 24px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-    white-space: nowrap;
+    margin-left: auto;                  /* прижимаем кнопку вправо */
+    background: #0b2b4a;                /* тёмно-синий фон */
+    color: #fff;                        /* белый текст */
+    padding: 10px 24px;                 /* внутренние отступы */
+    border-radius: 40px;                /* форма "таблетки" */
+    text-decoration: none;              /* без подчёркивания */
+    font-weight: 600;                   /* полужирный */
+    transition: 0.25s;                  /* плавный hover */
+    white-space: nowrap;                /* текст не переносится на новую строку */
 }
 
 .curator-preview .link:hover {
-    background: #1a4b6d;
-    transform: translateY(-2px);
+    background: #1a4b6d;                /* при наведении — чуть светлее */
+    transform: translateY(-2px);        /* лёгкий подъём */
 }
 
-/* ===== ИКОНКИ КОЛЛЕДЖА ===== */
+
+/* ======================================================
+   07. ГЛАВНАЯ: ИКОНКИ КОЛЛЕДЖА (BADGES)
+   Ряд маленьких бейджей с иконками и текстом.
+   ====================================================== */
 .college-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    padding: 16px 0 8px;
-    border-top: 1px solid #e2e8f0;
-    margin-top: 16px;
+    display: flex;                          /* бейджи в ряд */
+    flex-wrap: wrap;                        /* перенос при нехватке места */
+    justify-content: center;                /* по центру */
+    gap: 24px;                              /* расстояние между бейджами */
+    padding: 16px 0 8px;                    /* 16px сверху, 8px снизу */
+    border-top: 1px solid #e2e8f0;          /* тонкая линия сверху */
+    margin-top: 16px;                       /* отступ сверху */
 }
 
 .college-badges .badge-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #475569;
-    font-size: 0.9rem;
+    display: flex;                      /* иконка + текст в ряд */
+    align-items: center;                /* выравнивание по центру */
+    gap: 8px;                           /* расстояние между иконкой и текстом */
+    color: #475569;                     /* серо-синий текст */
+    font-size: 0.9rem;                  /* мелкий размер */
 }
 
 .college-badges .badge-item i {
-    font-size: 1.4rem;
-    color: #1a6b9e;
+    font-size: 1.4rem;                  /* крупная иконка */
+    color: #1a6b9e;                     /* синяя */
 }
 
-/* ===== СТРАНИЦА СТУДЕНТОВ ===== */
+
+/* ======================================================
+   08. СТРАНИЦА СТУДЕНТОВ: КУРАТОР
+   Большая карточка с фото куратора сверху страницы.
+   ====================================================== */
 .curator-section {
-    background: #fff;
-    border-radius: 20px;
-    padding: 32px 36px;
-    margin: 32px 0 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e2e8f0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 32px;
+    background: #fff;                               /* белая подложка */
+    border-radius: 20px;                            /* скруглённые углы */
+    padding: 32px 36px;                             /* 32px сверху/снизу, 36px по бокам */
+    margin: 32px 0 24px;                            /* 32px сверху, 24px снизу */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);    /* мягкая тень */
+    border: 1px solid #e2e8f0;                      /* тонкая рамка */
+    display: flex;                                  /* аватар + текст в ряд */
+    flex-wrap: wrap;                                /* перенос при нехватке места */
+   align-items: center;                            /* выравнивание по центру */
+    gap: 32px;                                      /* расстояние между элементами */
 }
 
 .curator-avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #facc15;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    flex-shrink: 0;
-    background: #dce5ed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    color: #1a4b6d;
+    width: 150px;                       /* ширина аватара */
+    height: 150px;                      /* высота аватара */
+    border-radius: 50%;                 /* круглая форма */
+    object-fit: cover;                  /* обрезка без искажений */
+    border: 4px solid #facc15;          /* толстая жёлтая рамка */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);  /* тень под аватаром */
+    flex-shrink: 0;                     /* не сжимать */
+    background: #dce5ed;                /* фон-заглушка */
+    display: flex;                      /* центрируем содержимое */
+    align-items: center;                /* по вертикали */
+    justify-content: center;            /* по горизонтали */
+    font-size: 4rem;                    /* крупная иконка-заглушка */
+    color: #1a4b6d;                     /* её цвет */
+    overflow: hidden;                   /* обрезаем всё, что вылезает за круг */
+}
+
+.curator-avatar img {
+    width: 100%;                        /* картинка на всю ширину контейнера */
+    height: 100%;                       /* и на всю высоту */
+    object-fit: cover;                  /* обрезка без искажений */
+    border-radius: 50%;                 /* круглая */
 }
 
 .curator-info h3 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 4px;
+    font-size: 1.6rem;                  /* крупное ФИО */
+    font-weight: 800;                   /* очень жирный */
+    margin-bottom: 4px;                 /* небольшой отступ снизу */
 }
 
 .curator-info .curator-role {
-    font-size: 1rem;
-    color: #1a6b9e;
-    font-weight: 600;
-    background: #dbeafe;
-    padding: 4px 18px;
-    border-radius: 30px;
-    display: inline-block;
-    margin-bottom: 8px;
+    font-size: 1rem;                    /* базовый размер */
+    color: #1a6b9e;                     /* синий текст */
+    font-weight: 600;                   /* полужирный */
+    background: #dbeafe;                /* светло-голубая подложка */
+    padding: 4px 18px;                  /* внутренние отступы */
+    border-radius: 30px;                /* "таблетка" */
+    display: inline-block;              /* по ширине содержимого */
+    margin-bottom: 8px;                 /* отступ снизу */
 }
 
 .curator-info .curator-role i {
-    color: #facc15;
+    color: #facc15;                     /* жёлтая звёздочка */
 }
 
 .curator-info p {
-    color: #475569;
-    font-size: 1rem;
-    max-width: 500px;
+    color: #475569;                     /* серо-синий текст */
+    font-size: 1rem;                    /* базовый размер */
+    max-width: 500px;                   /* ограничение ширины для читаемости */
 }
 
 .curator-info .quote {
-    font-style: italic;
-    color: #64748b;
-    margin-top: 8px;
-    padding-left: 16px;
-    border-left: 4px solid #facc15;
+    font-style: italic;                 /* курсив (цитата) */
+    color: #64748b;                     /* приглушённый серый */
+    margin-top: 8px;                    /* отступ сверху */
+    padding-left: 16px;                 /* отступ слева от полоски */
+    border-left: 4px solid #facc15;     /* жёлтая полоска слева */
 }
 
+
+/* ======================================================
+   09. СТРАНИЦА СТУДЕНТОВ: ЗАГОЛОВОК
+   Строка "Наши студенты" + счётчик количества.
+   ====================================================== */
 .page-title {
-    padding: 8px 0 12px;
+    padding: 8px 0 12px;                /* отступы сверху и снизу */
 }
 
 .page-title h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    font-size: 2rem;                    /* крупный заголовок */
+    font-weight: 800;                   /* очень жирный */
+    letter-spacing: -0.02em;            /* лёгкое сжатие */
 }
 
 .page-title h2 i {
-    color: #1a6b9e;
-    margin-right: 12px;
+    color: #1a6b9e;                     /* синяя иконка */
+    margin-right: 12px;                 /* отступ справа от иконки */
 }
 
 .page-title .count {
-    background: #dbeafe;
-    color: #1a4b6d;
-    padding: 2px 16px;
-    border-radius: 40px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin-left: 10px;
+    background: #dbeafe;                /* светло-голубая подложка */
+    color: #1a4b6d;                     /* тёмно-синий текст */
+    padding: 2px 16px;                  /* внутренние отступы */
+    border-radius: 40px;                /* "таблетка" */
+    font-weight: 700;                   /* жирный */
+    font-size: 0.95rem;                 /* чуть меньше базового */
+    margin-left: 10px;                  /* отступ слева от заголовка */
 }
 
+
+/* ======================================================
+   10. СТРАНИЦА СТУДЕНТОВ: СЕТКА
+   Автоматическая сетка карточек студентов.
+   ====================================================== */
 .students-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 28px;
-    padding: 16px 0 48px;
+    display: grid;                                              /* сетка */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));  /* авто-колонки от 280px */
+    gap: 28px;                                                  /* расстояние между карточками */
+    padding: 16px 0 48px;                                       /* 16px сверху, 48px снизу */
 }
 
+
+/* ======================================================
+   11. СТРАНИЦА СТУДЕНТОВ: КАРТОЧКА-ССЫЛКА
+   Карточка-ссылка на личную страницу студента.
+   ====================================================== */
 .student-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 24px 20px 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e2e8f0;
-    transition: 0.25s ease;
-    text-align: center;
+    /* ---- как ссылка ---- */
+    display: flex;                      /* включаем flex, чтобы содержимое шло столбиком */
+    flex-direction: column;             /* аватар → имя → роль → цитата */
+    align-items: center;                /* центрируем всё по горизонтали */
+    text-decoration: none;              /* убираем подчёркивание ссылки */
+    color: inherit;                     /* цвет текста берётся от родителя (не синий) */
+    cursor: pointer;                    /* курсор "рука" при наведении */
+
+    /* ---- как карточка ---- */
+    background: #fff;                               /* белая подложка */
+    border-radius: 20px;                            /* скруглённые углы */
+    padding: 24px 20px 20px;                        /* 24px сверху, 20px по бокам и снизу */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);    /* мягкая тень */
+    border: 1px solid #e2e8f0;                      /* тонкая рамка */
+    transition: 0.25s ease;                         /* плавный hover */
+    text-align: center;                             /* текст по центру */
 }
 
 .student-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.12);
-    border-color: #facc15;
+    transform: translateY(-6px);                                /* приподнимаем на 6px */
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.12);         /* усиливаем тень */
+    border-color: #facc15;                                      /* жёлтая рамка */
+}
+
+.student-card:focus-visible {
+    outline: 3px solid #facc15;         /* жёлтая обводка при фокусе с клавиатуры (Tab) */
+    outline-offset: 3px;                /* отступ обводки от элемента */
 }
 
 .student-card .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: #dce5ed;
-    border: 3px solid #facc15;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    margin: 0 auto 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #1a4b6d;
+    width: 100px;                       /* ширина аватара */
+    height: 100px;                      /* высота аватара */
+    border-radius: 50%;                 /* круглая форма */
+    overflow: hidden;                   /* обрезаем всё, что выходит за круг */
+    background: #dce5ed;                /* фон-заглушка */
+    border: 3px solid #facc15;          /* жёлтая рамка */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);  /* тень */
+    margin: 0 auto 12px;                /* авто-центрирование по горизонтали, 12px снизу */
+    display: flex;                      /* центрируем заглушку "ФИО" */
+    align-items: center;                /* по вертикали */
+    justify-content: center;            /* по горизонтали */
+    font-size: 2.4rem;                  /* крупный текст-заглушка */
+    font-weight: 700;                   /* жирный */
+    color: #1a4b6d;                     /* цвет текста-заглушки */
+}
+
+.student-card .avatar img {
+    width: 100%;                        /* картинка на всю ширину */
+    height: 100%;                       /* и на всю высоту */
+    object-fit: cover;                  /* обрезка без искажений */
+    border-radius: 50%;                 /* круглая */
+    display: block;                     /* убираем невидимый зазор под картинкой */
 }
 
 .student-card .student-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1.3;
+    font-size: 1.1rem;                  /* имя студента */
+    font-weight: 700;                   /* жирный */
+    line-height: 1.3;                   /* межстрочный интервал */
+    color: #1e293b;                     /* тёмный текст */
 }
 
 .student-card .student-role {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    color: #1a6b9e;
-    background: #e6f0fa;
-    padding: 2px 14px;
-    border-radius: 30px;
-    font-weight: 600;
-    display: inline-block;
-    margin-top: 4px;
+    font-size: 0.72rem;                 /* мелкий текст */
+    text-transform: uppercase;          /* ВСЁ ЗАГЛАВНЫМИ */
+    letter-spacing: 0.4px;              /* лёгкая разреженность букв */
+    color: #1a6b9e;                     /* синий текст */
+    background: #e6f0fa;                /* светло-голубая подложка */
+    padding: 2px 14px;                  /* внутренние отступы */
+    border-radius: 30px;                /* "таблетка" */
+    font-weight: 600;                   /* полужирный */
+    display: inline-block;              /* по ширине содержимого */
+    margin-top: 4px;                    /* отступ сверху */
+    line-height: 1.4;                   /* высота строки (для многострочных ролей) */
 }
 
 .student-card .student-story {
-    font-size: 0.92rem;
-    color: #475569;
-    margin-top: 10px;
-    line-height: 1.5;
-    font-style: italic;
-    background: #f8fafc;
-    padding: 12px 14px;
-    border-radius: 12px;
-    border-left: 3px solid #facc15;
-    text-align: left;
+    font-size: 0.92rem;                 /* мелкий текст цитаты */
+    color: #475569;                     /* серо-синий */
+    margin-top: 10px;                   /* отступ сверху */
+    line-height: 1.5;                   /* межстрочный интервал */
+    font-style: italic;                 /* курсив */
+    background: #f8fafc;                /* почти белый фон */
+    padding: 12px 14px;                 /* внутренние отступы */
+    border-radius: 12px;                /* скруглённые углы */
+    border-left: 3px solid #facc15;     /* жёлтая полоска слева (эффект цитаты) */
+    text-align: left;                   /* текст по левому краю */
+    width: 100%;                        /* на всю ширину карточки */
 }
 
 .student-card .student-story i {
-    color: #facc15;
-    margin-right: 4px;
+    color: #facc15;                     /* жёлтая иконка кавычек */
+    margin-right: 4px;                  /* отступ от иконки до текста */
 }
 
-/* ===== ФУТЕР ===== */
+
+/* ======================================================
+   12. ЛИЧНАЯ СТРАНИЦА СТУДЕНТА
+   Отдельная страница с ФИО, фото, достижениями и увлечениями.
+   ====================================================== */
+.back-link {
+    display: inline-flex;               /* flex, но по ширине содержимого */
+    align-items: center;                /* выравнивание по центру */
+    gap: 8px;                           /* расстояние между иконкой и текстом */
+    margin: 24px 0 16px;                /* 24px сверху, 16px снизу */
+    color: #1a6b9e;                     /* синий текст */
+    text-decoration: none;              /* без подчёркивания */
+    font-weight: 600;                   /* полужирный */
+    font-size: 0.95rem;                 /* чуть меньше базового */
+    transition: 0.2s;                   /* плавный hover */
+}
+
+.back-link:hover {
+    color: #0b2b4a;                     /* тёмнее при наведении */
+    transform: translateX(-3px);        /* сдвиг влево (намёк "назад") */
+}
+
+.student-profile {
+    background: #fff;                               /* белая подложка */
+    border-radius: 24px;                            /* скруглённые углы */
+    padding: 40px;                                  /* внутренние отступы со всех сторон */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);    /* мягкая тень */
+    border: 1px solid #e2e8f0;                      /* тонкая рамка */
+    margin-bottom: 48px;                            /* отступ снизу перед футером */
+}
+
+.profile-header {
+    display: flex;                      /* аватар + инфо в ряд */
+    flex-wrap: wrap;                    /* перенос при нехватке места */
+    align-items: center;                /* выравнивание по центру */
+    gap: 32px;                          /* расстояние между аватаром и текстом */
+    padding-bottom: 28px;               /* отступ снизу */
+    border-bottom: 3px solid #facc15;   /* жёлтая линия-разделитель снизу */
+    margin-bottom: 28px;                /* отступ снизу до следующего блока */
+}
+
+.profile-avatar {
+    width: 180px;                       /* ширина аватара */
+    height: 180px;                      /* высота аватара */
+    border-radius: 50%;                 /* круглая форма */
+    overflow: hidden;                   /* обрезаем за круг */
+    border: 5px solid #facc15;          /* толстая жёлтая рамка */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);  /* тень */
+    flex-shrink: 0;                     /* не сжимать */
+    background: #dce5ed;                /* фон-заглушка */
+    display: flex;                      /* центрируем заглушку */
+    align-items: center;                /* по вертикали */
+    justify-content: center;            /* по горизонтали */
+    font-size: 4rem;                    /* крупная иконка-заглушка */
+    font-weight: 800;                   /* очень жирная */
+    color: #1a4b6d;                     /* цвет текста-заглушки */
+}
+
+.profile-avatar img {
+    width: 100%;                        /* картинка на всю ширину */
+    height: 100%;                       /* и на всю высоту */
+    object-fit: cover;                  /* обрезка без искажений */
+    border-radius: 50%;                 /* круглая */
+}
+
+.profile-info h1 {
+    font-size: 2.2rem;                  /* крупное ФИО */
+    font-weight: 800;                   /* очень жирный */
+    letter-spacing: -0.02em;            /* лёгкое сжатие */
+    margin-bottom: 10px;                /* отступ снизу */
+}
+
+.profile-role {
+    display: inline-block;              /* по ширине содержимого */
+    background: #dbeafe;                /* светло-голубая подложка */
+    color: #1a4b6d;                     /* тёмно-синий текст */
+    padding: 6px 20px;                  /* внутренние отступы */
+    border-radius: 30px;                /* "таблетка" */
+    font-weight: 600;                   /* полужирный */
+    font-size: 0.95rem;                 /* чуть меньше базового */
+    margin-bottom: 12px;                /* отступ снизу */
+}
+
+.profile-role i {
+    color: #facc15;                     /* жёлтая иконка */
+    margin-right: 6px;                  /* отступ справа */
+}
+
+.profile-quote {
+    font-style: italic;                 /* курсив */
+    color: #475569;                     /* серо-синий */
+    font-size: 1.05rem;                 /* чуть крупнее базового */
+    padding-left: 16px;                 /* отступ от полоски */
+    border-left: 4px solid #facc15;     /* жёлтая полоска слева */
+}
+
+.profile-section {
+    margin-bottom: 28px;                /* отступ снизу между секциями */
+}
+
+.profile-section h2 {
+    font-size: 1.4rem;                  /* подзаголовок секции */
+    font-weight: 700;                   /* жирный */
+    margin-bottom: 14px;                /* отступ снизу */
+    display: flex;                      /* иконка + текст в ряд */
+    align-items: center;                /* выравнивание по центру */
+    gap: 10px;                          /* расстояние между иконкой и текстом */
+}
+
+.profile-section h2 i {
+    color: #1a6b9e;                     /* синяя иконка */
+}
+
+.profile-section ul {
+    list-style: none;                   /* убираем точки у списка */
+    padding-left: 0;                    /* убираем стандартный отступ слева */
+}
+
+.profile-section ul li {
+    padding: 10px 0 10px 32px;          /* 10px сверху/снизу, 32px слева (место под галочку) */
+    position: relative;                 /* нужно для абсолютного позиционирования ::before */
+    color: #334155;                     /* серо-синий текст */
+    font-size: 1rem;                    /* базовый размер */
+    border-bottom: 1px solid #eef2f6;   /* тонкая линия снизу между пунктами */
+}
+
+.profile-section ul li:last-child {
+    border-bottom: none;                /* у последнего пункта убираем линию */
+}
+
+.profile-section ul li::before {
+    content: "\f00c";                       /* код галочки в Font Awesome */
+    font-family: "Font Awesome 6 Free";     /* шрифт иконок */
+    font-weight: 900;                       /* обязательный вес для solid-иконок */
+    color: #facc15;                         /* жёлтая галочка */
+    position: absolute;                     /* позиционируем относительно li */
+    left: 0;                                /* прижимаем к левому краю */
+    top: 10px;                              /* выравниваем по вертикали с текстом */
+    font-size: 1rem;                        /* размер галочки */
+}
+
+.profile-section p {
+    color: #334155;                     /* серо-синий текст */
+    font-size: 1rem;                    /* базовый размер */
+    line-height: 1.6;                   /* комфортный межстрочный интервал */
+}
+
+
+/* ======================================================
+   13. РАСПИСАНИЕ
+   Одна общая страница, которую ты редактируешь вручную.
+   ====================================================== */
+.schedule-section {
+    padding: 20px 0 40px;               /* 20px сверху, 40px снизу */
+}
+
+.schedule-section .page-title {
+    margin-bottom: 24px;                /* отступ снизу от заголовка */
+}
+
+.schedule-card {
+    background: #fff;                               /* белая подложка */
+    border-radius: 24px;                            /* скруглённые углы */
+    padding: 36px 40px;                             /* 36px сверху/снизу, 40px по бокам */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);    /* мягкая тень */
+    border: 1px solid #e2e8f0;                      /* тонкая рамка */
+    max-width: 700px;                               /* ограничение ширины */
+}
+
+.schedule-header {
+    display: flex;                      /* день + дата в ряд */
+    align-items: center;                /* выравнивание по центру */
+    justify-content: space-between;     /* день слева, дата справа */
+    flex-wrap: wrap;                    /* перенос при нехватке места */
+    gap: 12px;                          /* расстояние между элементами */
+    padding-bottom: 18px;               /* отступ снизу */
+    border-bottom: 3px solid #facc15;   /* жёлтая линия-разделитель снизу */
+    margin-bottom: 24px;                /* отступ снизу до списка пар */
+}
+
+.schedule-header .day-name {
+    font-size: 2rem;                    /* крупный день недели */
+    font-weight: 800;                   /* очень жирный */
+    color: #facc15;                     /* жёлтый текст */
+    letter-spacing: -0.02em;            /* лёгкое сжатие */
+}
+
+.schedule-header .day-name i {
+    color: #facc15;                     /* жёлтая иконка */
+    margin-right: 12px;                 /* отступ справа */
+}
+
+.schedule-header .day-date {
+    font-size: 1.15rem;                 /* размер даты */
+    color: #64748b;                     /* приглушённый серый */
+    font-weight: 500;                   /* средняя жирность */
+    background: #eef2f6;                /* светло-серый фон */
+    padding: 4px 18px;                  /* внутренние отступы */
+    border-radius: 30px;                /* "таблетка" */
+}
+
+.lesson-list {
+    list-style: none;                   /* убираем точки у списка */
+}
+
+.lesson-list li {
+    display: flex;                      /* название + кабинет в ряд */
+    align-items: center;                /* выравнивание по центру */
+    justify-content: space-between;     /* название слева, кабинет справа */
+    gap: 20px;                          /* расстояние между ними */
+    padding: 14px 0;                    /* 14px сверху/снизу */
+    border-bottom: 1px solid #eef2f6;   /* тонкая линия снизу */
+    font-size: 1.1rem;                  /* чуть крупнее базового */
+}
+
+.lesson-list li:last-child {
+    border-bottom: none;                /* у последней пары нет линии */
+}
+
+.lesson-list .lesson-name {
+    font-weight: 600;                   /* полужирный */
+    color: #1e293b;                     /* тёмный текст */
+    flex: 1;                            /* занимает всё свободное место */
+}
+
+.lesson-list .lesson-room {
+    background: #dbeafe;                /* светло-голубая подложка */
+    padding: 4px 18px;                  /* внутренние отступы */
+    border-radius: 20px;                /* "таблетка" */
+    font-size: 0.95rem;                 /* чуть меньше базового */
+    font-weight: 600;                   /* полужирный */
+    color: #1a4b6d;                     /* тёмно-синий текст */
+    white-space: nowrap;                /* текст не переносится */
+}
+
+.empty-message {
+    color: #94a3b8;                     /* светло-серый */
+    font-style: italic;                 /* курсив */
+    font-size: 1.1rem;                  /* чуть крупнее базового */
+    padding: 12px 0;                    /* отступ сверху/снизу */
+    text-align: center;                 /* по центру */
+}
+
+
+/* ======================================================
+   14. ДОСТИЖЕНИЯ ГРУППЫ
+   Сетка карточек с благодарностями, грамотами, дипломами группы.
+   ====================================================== */
+.achievements-section {
+    padding: 20px 0 40px;               /* 20px сверху, 40px снизу */
+}
+
+.achievements-section .page-title {
+    margin-bottom: 24px;                /* отступ снизу */
+}
+
+.achievements-grid {
+    display: grid;                                              /* сетка */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));  /* авто-колонки от 280px */
+    gap: 28px;                                                  /* расстояние между карточками */
+    padding: 16px 0 20px;                                       /* 16px сверху, 20px снизу */
+}
+
+.achievement-card {
+    background: #fff;                               /* белая подложка */
+    border-radius: 20px;                            /* скруглённые углы */
+    padding: 32px 24px 28px;                        /* 32px сверху, 24px по бокам, 28px снизу */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);    /* мягкая тень */
+    border: 1px solid #e2e8f0;                      /* тонкая рамка */
+    transition: 0.25s ease;                         /* плавный hover */
+    text-align: center;                             /* текст по центру */
+}
+
+.achievement-card:hover {
+    transform: translateY(-6px);                                /* приподнимаем на 6px */
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.12);         /* усиливаем тень */
+    border-color: #facc15;                                      /* жёлтая рамка */
+}
+
+.achievement-card .icon {
+    font-size: 3.6rem;                  /* крупная иконка (эмодзи или FA) */
+    color: #facc15;                     /* жёлтый цвет (если FA-иконка) */
+    margin-bottom: 14px;                /* отступ снизу */
+    line-height: 1;                     /* без лишней высоты строки */
+}
+
+.achievement-card .title {
+    font-size: 1.2rem;                  /* заголовок карточки */
+    font-weight: 700;                   /* жирный */
+    margin-bottom: 8px;                 /* отступ снизу */
+    color: #1e293b;                     /* тёмный текст */
+}
+
+.achievement-card .desc {
+    color: #475569;                     /* серо-синий текст */
+    font-size: 1rem;                    /* базовый размер */
+    line-height: 1.5;                   /* межстрочный интервал */
+}
+
+.achievement-card .date {
+    display: inline-block;              /* по ширине содержимого */
+    margin-top: 14px;                   /* отступ сверху */
+    background: #dbeafe;                /* светло-голубая подложка */
+    padding: 4px 20px;                  /* внутренние отступы */
+    border-radius: 30px;                /* "таблетка" */
+    font-size: 0.9rem;                  /* мелкий шрифт */
+    font-weight: 600;                   /* полужирный */
+    color: #1a4b6d;                     /* тёмно-синий текст */
+}
+
+.achievement-card img {
+    width: 100%;                        /* картинка на всю ширину карточки */
+    max-height: 180px;                  /* но не выше 180px */
+    object-fit: cover;                  /* обрезка без искажений */
+    border-radius: 12px;                /* скруглённые углы */
+    margin-bottom: 14px;                /* отступ снизу */
+    border: 1px solid #e2e8f0;          /* тонкая рамка */
+}
+
+
+/* ======================================================
+   15. ФУТЕР
+   Нижняя подпись с городом, годом и автором.
+   ====================================================== */
 .footer {
-    margin-top: 40px;
-    padding: 24px 0 18px;
-    border-top: 1px solid #e2e8f0;
-    text-align: center;
-    color: #475569;
-    font-size: 0.9rem;
+    margin-top: 40px;                   /* отступ сверху от контента */
+    padding: 24px 0 18px;               /* 24px сверху, 18px снизу */
+    border-top: 1px solid #e2e8f0;      /* тонкая линия сверху */
+    text-align: center;                 /* текст по центру */
+    color: #475569;                     /* серо-синий текст */
+    font-size: 0.9rem;                  /* мелкий размер */
 }
 
 .footer i {
-    color: #b22234;
-    margin: 0 4px;
+    color: #b22234;                     /* красная иконка (сердечко) */
+    margin: 0 4px;                      /* небольшие отступы по бокам */
 }
 
+
 /* ======================================================
-   АДАПТИВ
+   16. АДАПТИВ
+   Правила для планшетов и телефонов.
    ====================================================== */
+
+/* --- 16.1 Планшеты (≤ 860px) --- */
 @media (max-width: 860px) {
+
+    /* Меню */
     .navbar .container {
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: column;         /* логотип и меню в столбик */
+        align-items: stretch;           /* на всю ширину */
     }
 
     .nav-logo {
-        justify-content: center;
-        padding: 10px 0 4px;
+        justify-content: center;        /* логотип по центру */
+        padding: 10px 0 4px;            /* уменьшаем отступы */
     }
 
     .nav-menu {
-        justify-content: center;
-        padding: 4px 0 10px;
+        justify-content: center;        /* пункты меню по центру */
+        padding: 4px 0 10px;            /* уменьшаем отступы */
     }
 
     .nav-menu li a {
-        padding: 6px 14px;
-        font-size: 0.85rem;
+        padding: 6px 14px;              /* компактнее "таблетки" */
+        font-size: 0.85rem;             /* меньше шрифт */
     }
 
+    /* Hero */
     .hero__grid {
-        grid-template-columns: 1fr;
-        text-align: center;
+        grid-template-columns: 1fr;     /* одна колонка вместо двух */
+        text-align: center;             /* текст по центру */
     }
 
     .hero__text p {
-        margin-left: auto;
+        margin-left: auto;              /* центрируем абзац */
         margin-right: auto;
     }
 
     .hero__stats {
-        justify-content: center;
+        justify-content: center;        /* статистика по центру */
     }
 
     .hero__image .icon-grid {
-        max-width: 300px;
-        padding: 20px 16px;
-        gap: 14px;
+        max-width: 300px;               /* уменьшаем сетку иконок */
+        padding: 20px 16px;             /* компактнее */
+        gap: 14px;                      /* меньше расстояние */
     }
 
     .hero__image .icon-grid i {
-        font-size: 2.4rem;
+        font-size: 2.4rem;              /* мельче иконки */
     }
 
     .hero__text h2 {
-        font-size: 2rem;
+        font-size: 2rem;                /* мельче заголовок */
     }
 
+    /* Куратор (превью на главной) */
     .curator-preview {
-        flex-direction: column;
+        flex-direction: column;         /* аватар и текст в столбик */
         text-align: center;
     }
 
     .curator-preview .link {
-        margin-left: 0;
-        width: 100%;
+        margin-left: 0;                 /* кнопка больше не прижата вправо */
+        width: 100%;                    /* на всю ширину */
         text-align: center;
     }
 
+    /* Куратор (страница студентов) */
     .curator-section {
-        flex-direction: column;
+        flex-direction: column;         /* в столбик */
         text-align: center;
-        padding: 24px 20px;
+        padding: 24px 20px;             /* компактнее */
     }
 
     .curator-info .quote {
-        border-left: none;
+        border-left: none;              /* убираем левую полоску */
         padding-left: 0;
-        border-top: 3px solid #facc15;
+        border-top: 3px solid #facc15;  /* заменяем на верхнюю */
         padding-top: 12px;
     }
 
+    /* Фото колледжа */
     .college-photo img {
-        max-height: 200px;
+        max-height: 200px;              /* ниже фото */
     }
 
     .college-badges {
-        gap: 14px;
+        gap: 14px;                      /* компактнее бейджи */
     }
 
+    /* Сетка студентов */
     .students-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));  /* мельче карточки */
         gap: 20px;
     }
-}
 
-@media (max-width: 480px) {
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .nav-menu li a {
-        font-size: 0.75rem;
-        padding: 4px 10px;
-    }
-
-    .hero__text h2 {
-        font-size: 1.6rem;
-    }
-
-    .stat-item .num {
-        font-size: 1.3rem;
-    }
-
-    .college-photo img {
-        max-height: 150px;
-    }
-
-    .students-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .student-card {
-        padding: 18px 14px 16px;
-    }
-
-    .student-card .avatar {
-        width: 80px;
-        height: 80px;
-        font-size: 1.8rem;
-    }
-
-    .student-card .student-name {
-        font-size: 1rem;
-    }
-
-    .student-card .student-story {
-        font-size: 0.85rem;
-        padding: 10px 12px;
-    }
-
-    .curator-avatar {
-        width: 110px;
-        height: 110px;
-        font-size: 2.8rem;
-    }
-
-    .curator-info h3 {
-        font-size: 1.2rem;
-    }
-}
-
-
-        padding: 10px 0;
-    }
-
-    .lesson-list li {
-        font-size: 0.85rem;
-    }
-
-    .lesson-list .lesson-time {
-        font-size: 0.75rem;
-        min-width: 50px;
-    }
-
-    .lesson-list .lesson-room {
-        font-size: 0.65rem;
-        padding: 0 8px;
-    }
-
-    .day-header .day-badge {
-        font-size: 0.6rem;
-        padding: 1px 10px;
-    }
-}
-
-/* ======================================================
-   СТРАНИЦА РАСПИСАНИЯ (ОДИН ДЕНЬ)
-   ====================================================== */
-
-.schedule-section {
-    padding: 20px 0 40px;
-}
-
-.schedule-section .page-title {
-    margin-bottom: 24px;
-}
-
-/* Карточка расписания */
-.schedule-card {
-    background: #fff;
-    border-radius: 24px;
-    padding: 36px 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e2e8f0;
-    max-width: 700px;
-}
-
-/* Шапка: день недели + дата */
-.schedule-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-bottom: 18px;
-    border-bottom: 3px solid #facc15;
-    margin-bottom: 24px;
-}
-
-.schedule-header .day-name {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #facc15;
-    letter-spacing: -0.02em;
-}
-
-.schedule-header .day-name i {
-    color: #facc15;
-    margin-right: 12px;
-}
-
-.schedule-header .day-date {
-    font-size: 1.15rem;
-    color: #64748b;
-    font-weight: 500;
-    background: #eef2f6;
-    padding: 4px 18px;
-    border-radius: 30px;
-}
-
-/* Список пар */
-.lesson-list {
-    list-style: none;
-}
-
-.lesson-list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 14px 0;
-    border-bottom: 1px solid #eef2f6;
-    font-size: 1.1rem;
-}
-
-.lesson-list li:last-child {
-    border-bottom: none;
-}
-
-.lesson-list .lesson-name {
-    font-weight: 600;
-    color: #1e293b;
-    flex: 1;
-}
-
-.lesson-list .lesson-room {
-    background: #dbeafe;
-    padding: 4px 18px;
-    border-radius: 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #1a4b6d;
-    white-space: nowrap;
-}
-
-/* Пустое расписание */
-.empty-message {
-    color: #94a3b8;
-    font-style: italic;
-    font-size: 1.1rem;
-    padding: 12px 0;
-    text-align: center;
-}
-
-/* Адаптив */
-@media (max-width: 600px) {
+    /* Расписание */
     .schedule-card {
-        padding: 20px 16px;
+        padding: 20px 16px;             /* компактнее */
     }
 
     .schedule-header {
-        flex-direction: column;
+        flex-direction: column;         /* день и дата в столбик */
         align-items: flex-start;
         gap: 6px;
     }
 
     .schedule-header .day-name {
-        font-size: 1.5rem;
+        font-size: 1.5rem;              /* мельче */
     }
 
     .schedule-header .day-date {
-        font-size: 1rem;
+        font-size: 1rem;                /* мельче */
         padding: 2px 14px;
     }
 
     .lesson-list li {
-        font-size: 1rem;
+        font-size: 1rem;                /* мельче */
         padding: 10px 0;
-        flex-wrap: wrap;
+        flex-wrap: wrap;                /* название может переноситься */
         gap: 6px;
     }
 
     .lesson-list .lesson-name {
-        flex: 1 1 100%;
-        order: 0;
+        flex: 1 1 100%;                 /* название занимает всю строку */
     }
 
     .lesson-list .lesson-room {
-        font-size: 0.85rem;
+        font-size: 0.85rem;             /* мельче кабинет */
         padding: 2px 14px;
-        order: 1;
-    }
-}
-
-    .lesson-list .lesson-time {
-        min-width: 55px;
-        font-size: 0.85rem;
     }
 
-    .lesson-list .lesson-name {
-        font-size: 0.9rem;
-        flex: 1 1 100%;
-        order: 1;
-    }
-
-    .lesson-list .lesson-room {
-        font-size: 0.7rem;
-        padding: 1px 10px;
-        order: 2;
-    }
-}
-
-/* ======================================================
-   СТРАНИЦА ДОСТИЖЕНИЙ
-   ====================================================== */
-
-.achievements-section {
-    padding: 20px 0 40px;
-}
-
-.achievements-section .page-title {
-    margin-bottom: 24px;
-}
-
-.achievements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 28px;
-    padding: 16px 0 20px;
-}
-
-.achievement-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 32px 24px 28px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e2e8f0;
-    transition: 0.25s ease;
-    text-align: center;
-}
-
-.achievement-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.12);
-    border-color: #facc15;
-}
-
-.achievement-card .icon {
-    font-size: 3.6rem;
-    color: #facc15;
-    margin-bottom: 14px;
-}
-
-.achievement-card .title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #1e293b;
-}
-
-.achievement-card .desc {
-    color: #475569;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.achievement-card .student-name {
-    display: inline-block;
-    margin-top: 14px;
-    background: #dbeafe;
-    padding: 4px 20px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #1a4b6d;
-}
-
-/* Адаптив */
-@media (max-width: 600px) {
+    /* Достижения */
     .achievement-card {
-        padding: 24px 16px 20px;
+        padding: 24px 16px 20px;        /* компактнее карточки */
     }
 
     .achievement-card .icon {
-        font-size: 2.8rem;
+        font-size: 2.8rem;              /* мельче иконки */
     }
 
     .achievement-card .title {
-        font-size: 1rem;
+        font-size: 1rem;                /* мельче заголовок */
     }
 
     .achievement-card .desc {
-        font-size: 0.9rem;
+        font-size: 0.9rem;              /* мельче текст */
+    }
+
+    /* Личная страница студента */
+    .student-profile {
+        padding: 24px 20px;             /* компактнее */
+    }
+
+    .profile-header {
+        flex-direction: column;         /* аватар и инфо в столбик */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .profile-avatar {
+        width: 140px;                   /* мельче аватар */
+        height: 140px;
+    }
+
+    .profile-info h1 {
+        font-size: 1.6rem;              /* мельче ФИО */
+    }
+
+    .profile-quote {
+        border-left: none;              /* убираем левую полоску */
+        padding-left: 0;
+        border-top: 3px solid #facc15;  /* заменяем на верхнюю */
+        padding-top: 12px;
+    }
+}
+
+
+/* --- 16.2 Телефоны (≤ 480px) --- */
+@media (max-width: 480px) {
+
+    /* Общее */
+    .cards {
+        grid-template-columns: 1fr;     /* карточки в один столбик */
+    }
+
+    .nav-menu li a {
+        font-size: 0.75rem;             /* совсем мелкий шрифт */
+        padding: 4px 10px;              /* очень компактные "таблетки" */
+    }
+
+    .hero__text h2 {
+        font-size: 1.6rem;              /* ещё мельче заголовок */
+    }
+
+    .stat-item .num {
+        font-size: 1.3rem;              /* мельче цифры статистики */
+    }
+
+    .college-photo img {
+        max-height: 150px;              /* ещё ниже фото */
+    }
+
+    /* Сетка студентов */
+    .students-grid {
+        grid-template-columns: 1fr;     /* одна колонка */
+        gap: 16px;                      /* меньше расстояние */
+    }
+
+    .student-card {
+        padding: 18px 14px 16px;        /* компактнее */
+    }
+
+    .student-card .avatar {
+        width: 80px;                    /* мельче аватар */
+        height: 80px;
+        font-size: 1.8rem;              /* мельче заглушка */
+    }
+
+    .student-card .student-name {
+        font-size: 1rem;                /* мельче имя */
+    }
+
+    .student-card .student-story {
+        font-size: 0.85rem;             /* мельче цитата */
+        padding: 10px 12px;
+    }
+
+    /* Куратор */
+    .curator-avatar {
+        width: 110px;                   /* мельче аватар */
+        height: 110px;
+        font-size: 2.8rem;              /* мельче иконка-заглушка */
+    }
+
+    .curator-info h3 {
+        font-size: 1.2rem;              /* мельче ФИО */
     }
 }
