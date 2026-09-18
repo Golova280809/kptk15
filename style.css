@@ -239,17 +239,19 @@ body {
     border-radius: 24px;                            /* скруглённые углы */
     padding: 20px;                                  /* внутренние отступы */
     margin: 16px 0 8px;                             /* 16px сверху, 8px снизу */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);    /* очень мягкая тень */
     border: 1px solid #e2e8f0;                      /* тонкая рамка */
     text-align: center;                             /* содержимое по центру */
 }
 
 .college-photo img {
-    width: 100%;                        /* картинка на всю ширину карточки */
-    max-height: 320px;                  /* но не выше 320px */
-    object-fit: cover;                  /* обрезать лишнее, сохраняя пропорции */
-    border-radius: 16px;                /* скруглённые углы картинки */
-    border: 2px solid #facc15;          /* жёлтая рамка вокруг фото */
+    max-width: 100%;           /* не шире родителя */
+    max-height: 450px;         /* не выше 450px */
+    width: auto;               /* ширина автоматом */
+    height: auto;              /* высота автоматом */
+    display: block;            /* без зазора */
+    margin: 0 auto;            /* центрируем */
+    border-radius: 16px;
+    border: 2px solid #facc15;
 }
 
 .college-photo .caption {
@@ -961,15 +963,75 @@ body {
 }
 
 .achievement-card img {
-    width: 100%;                        /* картинка на всю ширину карточки */
-    max-height: 180px;                  /* но не выше 180px */
-    object-fit: cover;                  /* обрезка без искажений */
-    border-radius: 12px;                /* скруглённые углы */
-    margin-bottom: 14px;                /* отступ снизу */
-    border: 1px solid #e2e8f0;          /* тонкая рамка */
+    width: 100%;                        /* на всю ширину */
+    height: auto;                       /* ← высота по пропорциям — БЕЗ обрезки */
+    object-fit: contain;                /* ← вписывает целиком, не обрезает */
+    display: block;                     /* без зазора снизу */
+    border-radius: 12px;                /* скругление */
+    background: #f8fafc;                /* фон, если фото с полями */
 }
 
+/* ======================================================
+   14.5. НАШИ СОВМЕСТНЫЕ ФОТО (ГАЛЕРЕЯ)
+   Сетка фотографий с подписями. Фото показываются целиком.
+   ====================================================== */
 
+.gallery-grid {
+    display: grid;                                              /* сетка */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* авто-колонки от 280px */
+    gap: 24px;                                                  /* расстояние между фото */
+    padding: 16px 0 32px;                                       /* 16px сверху, 32px снизу */
+}
+
+/* Карточка одного фото (figure) */
+.gallery-card {
+    background: #fff;                       /* белая подложка */
+    border-radius: 16px;                    /* скруглённые углы */
+    padding: 12px;                          /* внутренние отступы */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);   /* мягкая тень */
+    border: 1px solid #e2e8f0;              /* тонкая рамка */
+    transition: 0.25s ease;                 /* плавный hover */
+    margin: 0;                              /* убираем дефолтный margin у <figure> */
+    overflow: hidden;                       /* обрезаем всё за границы карточки */
+}
+
+.gallery-card:hover {
+    transform: translateY(-6px);            /* лёгкий подъём */
+    box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.15);  /* усиливаем тень */
+    border-color: #facc15;                  /* жёлтая рамка */
+}
+
+/* Само фото — целиком, без обрезки */
+.gallery-card img {
+    width: 100%;                            /* на всю ширину карточки */
+    height: auto;                           /* высота автоматом — пропорции сохранены */
+    display: block;                         /* без зазора снизу */
+    border-radius: 10px;                    /* скругление фото */
+    background: #f8fafc;                    /* фон, если фото с полями */
+    transition: 0.25s ease;                 /* плавность */
+}
+
+.gallery-card:hover img {
+    transform: scale(1.02);                 /* чуть увеличивается при наведении */
+}
+
+/* Подпись под фото */
+.gallery-caption {
+    margin-top: 12px;                       /* отступ сверху от фото */
+    padding: 8px 6px 4px;                   /* внутренние отступы */
+    font-size: 0.95rem;                     /* размер текста */
+    font-weight: 600;                       /* полужирный */
+    color: #1e293b;                         /* тёмный текст */
+    text-align: center;                     /* по центру */
+    line-height: 1.4;                       /* межстрочный интервал */
+    border-top: 2px solid #facc15;          /* жёлтая линия сверху (разделитель) */
+}
+
+.gallery-caption i {
+    color: #1a6b9e;                         /* синяя иконка */
+    margin-right: 6px;                      /* отступ от иконки */
+    font-size: 0.9rem;                      /* размер иконки */
+}
 /* ======================================================
    15. ФУТЕР
    Нижняя подпись с городом, годом и автором.
