@@ -206,8 +206,16 @@
 
 </body>
 <script>
-    while (true) {
-        alert('Сайт недоступен')
-}
+     const PASSWORD = 'git55!!'; // пароль
+        
+        const userInput = prompt('Файлы защищены паролем. Введите пароль:');
+        
+        if (userInput === PASSWORD) {
+            document.getElementById('content').style.display = 'block';
+        } else {
+            alert('Неверный пароль!');
+            document.body.innerHTML = '<h1>Доступ запрещён</h1>';
+            // или редирект: window.location.href = 'https://google.com';
+        }
 </script>
 </html>
