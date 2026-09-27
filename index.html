@@ -87,18 +87,6 @@
                 </a>
             </div>
         </div>
-        <div class="hero__image">
-            <div class="icon-grid">
-                <i class="fas fa-file-word"></i>
-                <i class="fas fa-file-excel"></i>
-                <i class="fas fa-file-powerpoint"></i>
-                <i class="fas fa-database"></i>
-                <i class="fas fa-cloud"></i>
-                <i class="fas fa-network-wired"></i>
-                <i class="fas fa-shield-alt"></i>
-                <i class="fas fa-print"></i>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -143,12 +131,14 @@
     <div class="gallery-grid">
 
         <!-- ФОТО 1 -->
-        <figure class="gallery-card">
-            <img src="img/group_photo/group_photo.jpg" alt="Совместное фото группы 15 в медиацентре" />
-            <figcaption class="gallery-caption">
-                <i class="fas fa-camera-retro"></i> Фото в медиацентре<br>(На фото не все)<br>~10-14 сентября 2026 года
-            </figcaption>
-        </figure>
+        <a href="img/group_photo/group_photo.jpg">
+            <figure class="gallery-card">
+                <img src="img/group_photo/group_photo.jpg" alt="Совместное фото группы 15 в медиацентре" />
+                <figcaption class="gallery-caption">
+                    <i class="fas fa-camera-retro"></i> Фото в медиацентре<br>(На фото не все)<br>~10-14 сентября 2026 года
+                </figcaption>
+            </figure>
+        </a>
         <!-- 
 
         
@@ -206,16 +196,6 @@
 
 </body>
 <script>
-     const PASSWORD = 'git55!!'; // пароль
-        
-        const userInput = prompt('Файлы защищены паролем. Введите пароль:');
-        
-        if (userInput === PASSWORD) {
-            document.getElementById('content').style.display = 'block';
-        } else {
-            alert('Неверный пароль!');
-            document.body.innerHTML = '<h1>Доступ запрещён</h1>';
-            // или редирект: window.location.href = 'https://google.com';
-        }
+     
 </script>
 </html>
